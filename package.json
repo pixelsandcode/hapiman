@@ -1,0 +1,26 @@
+{
+  "name": "hapiman",
+  "version": "1.0.0",
+  "description": "Postman for hapi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arash Karimzadeh",
+  "license": "ISC",
+  "dependencies": {
+    "pug": "^0.1.0",
+    "hoek": "^4.1.0"
+  },
+  "peerDependencies": {
+    "hapi": "^15.0.0",
+    "inert": "^4.1.0",
+    "joi": "^10.2.2",
+    "vision": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0"
+  }
+}
