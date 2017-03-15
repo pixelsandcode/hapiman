@@ -1,0 +1,235 @@
+/*import 'bootstrap'
+import "../../node_modules/jasny-bootstrap/dist/css/jasny-bootstrap.min.css";
+import 'material-design-iconic-font'
+*/
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+a, .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+.navbar-default .navbar-toggle {
+  float: left;
+  margin-left: 15px;
+  border: none;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background: #2c3e50;
+}
+.navbar-default .navbar-toggle .icon-bar{
+  background-color: rgba(255,255,255,0.5);
+}
+
+.navmenu {
+  z-index: 1;
+}
+
+#canvas {
+  position: relative;
+  left: 0;
+  z-index: 2;
+  min-height: 100%;
+  padding: 50px 0 0 0;
+  background: #fff;
+}
+
+@media (min-width: 0) {
+  .navbar-toggle {
+    display: block; /* force showing the toggle */
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding: 0;
+  }
+  .navbar {
+    right: auto;
+    background: none;
+    border: none;
+  }
+  #canvas {
+    padding: 0;
+  }
+}
+
+/* GENERIC */
+.m-r-10{
+  margin-right: 10px;
+}
+.p-10{
+  padding: 10px;
+}
+.p-t-10{
+  padding-top: 10px;
+}
+.p-t-5{
+  padding-top: 5;
+}
+.pointer{
+  cursor: pointer;
+}
+
+
+/* PAGE */
+#canvas{
+  background: #eee;
+}
+#main .top-section{
+  background: #34495e;
+  padding-top: 60px;
+  color: #fff;
+  min-height: 200px;
+  position: relative;
+}
+#main .bottom-section{
+  padding-top: 40px;
+}
+.card{
+  background: #fff;
+  padding: 20px;
+}
+
+#lookup *{
+  border: none;
+  border-radius: 0;
+}
+#lookup{
+  border-bottom: 1px solid #ddd;
+}
+#lookup .input-group-addon i{
+  width: 15px;
+}
+
+.navmenu .title{
+  font-size: 14px;
+  padding: 10px 15px;
+  color: #aaa;
+}
+
+.navmenu .navmenu-nav > li > a{
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 1px dashed rgba(255,255,255,0.5);
+  border-left: 4px solid transparent;
+  display: block;
+}
+.navmenu .navmenu-nav > li > a:hover{
+  border-left-color: rgba(0,0,0,0.3);
+}
+
+.navmenu-nav .info{
+  display: block;
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.api-get{
+  background: #3498db;
+}
+.api-post{
+  background: #2ecc71;
+}
+.api-put{
+  background: #1abc9c;
+}
+.api-delete{
+  background: #e74c3c;
+}
+
+.explorer .api{
+  font-weight: bold;
+}
+.explorer .input-group-addon,
+.explorer .input-group-btn,
+.explorer .input-group-btn .btn{
+  border-radius: 0;
+}
+.explorer .method{
+  border: none;
+  font-weight: bold;
+}
+.explorer .path{
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.btn-circle {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 28px;
+  border-radius: 25px;
+  background: #3498db;
+  color: #2c3e50;
+  position: absolute;
+  bottom: -25px;
+  right: 10%;
+}
+
+.explorer .info{
+  background: #34495e;
+  color: #fff;
+  padding-bottom: 10px;
+}
+.tag, .tag:hover {
+  font-size: 10px;
+  background: #2c3e50;
+  display: inline-block;
+  padding: 3px 10px;
+  margin-right: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+.tag:hover {
+  background: #3498db;
+}
+
+.explorer .form{
+  padding-top: 5px;
+}
+.explorer .form .field{
+  padding: 3px 0px;
+  margin-bottom: 1px;
+}
+.explorer .form .field,
+.explorer .form .field input{
+  color: #bbb;
+}
+.explorer .form .field.active input{
+  color: #fff;
+  background: #95a5a6;
+}
+
+.explorer .form .field .checkbox{
+  background: #ecf0f1;
+  color: #fff;
+  margin-top: 6px;
+}
+.explorer .form .field.active .checkbox{
+  background: #34495e;
+}
+.explorer .form .field .checkbox[disabled]{
+  background: #34495e;
+}
+
+.explorer .form .field input{
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}

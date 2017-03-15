@@ -101,7 +101,7 @@ exports.register = function (plugin, options, next) {
         config: {
           handler: { directory: { path: __dirname + '/template/assets' } },
           plugins: {
-            hapiman: true
+            hapiman: false
           }
         }
       }

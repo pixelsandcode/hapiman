@@ -4,45 +4,80 @@ html(lang="en" ng-app='docs')
     meta(charset='utf-8')
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(href="/docs/assets/css/bootstrap.min.css" rel="stylesheet")
-    link(href="/docs/assets/css/jasny-bootstrap.min.css" rel="stylesheet")
-    link(href="/docs/assets/css/material-design-iconic-font.min.css" rel="stylesheet")
-    link(href="/docs/assets/css/main.css" rel="stylesheet")
-    script(src="/docs/assets/js/angular.min.js")
-    script(src="/docs/assets/js/angular-ui-router.min.js")
-    script(src="/docs/assets/js/moment.js")
-    script(src="/docs/assets/js/angular-moment.min.js")
-    script(src="/docs/assets/js/jquery.min.js")
-    script(src="/docs/assets/js/bootstrap.min.js")
-    script(src="/docs/assets/js/jasny-bootstrap.min.js")
-    script(src="/docs/assets/js/ui-bootstrap.min.js")
-    script(src="/docs/assets/js/ui-bootstrap-tpls.min.js")
+    script(src="/docs/assets/css/main.css")
     script(src="/docs/assets/js/main.js")
     title API Documentation
   body(ng-controller='mainController')
     .navmenu.navmenu-default.navmenu-fixed-left.offcanvas#mainMenu(role="navigation")
       .form#lookup
         .input-group
-          input.form-control(placeholder='Search')
-          span.input-group-addon
-            i.zmdi.zmdi-search-for
-      uib-accordion(close-others="true")
-        div.uib-accordion-group(ng-repeat='connection in connections')
-          .panel-heading
-            .panel-title
-              i.zmdi.zmdi-view-list.m-r-10
-              span(ng-repeat='label in connection.labels') {{label}}
-              .pull-right
-                i.zmdi.zmdi-info(tooltip-placement='right' uib-tooltip='{{connection.info.uri}}' tooltip-append-to-body='true')
-          ul.nav.navmenu-nav
-            li(ng-repeat='api in connection.table' ng-class="{ GET: 'api-get', POST: 'api-post', PUT: 'api-put', DELETE: 'api-delete' }[api.method]")
-              a(ng-click='select(api)') {{api.method}} {{api.path}}
+          input.form-control(placeholder='Search' ng-model='filterTerm')
+          span.input-group-addon.pointer(ng-click='filterTerm=""')
+            i.zmdi.zmdi-search-for(ng-hide='filterTerm')
+            i.zmdi.zmdi-close(ng-show='filterTerm')
+      div(ng-repeat='connection in connections')
+        .title.pointer(ng-click='toggle(connection)')
+          i.zmdi.zmdi-view-list.m-r-10
+          span(ng-repeat='label in connection.labels') {{label}}
+          .pull-right
+            i.zmdi.zmdi-info(tooltip-placement='right' uib-tooltip='{{connection.info.uri}}' tooltip-append-to-body='true')
+        ul.nav.navmenu-nav(ng-show='connection.show')
+          li(ng-repeat='api in connection.table | filter:filterTerm' ng-class="{ GET: 'api-get', POST: 'api-post', PUT: 'api-put', DELETE: 'api-delete' }[api.method]")
+            a(ng-click='select(api)')
+              | {{api.method}} {{api.path}}
+              span.info {{api.description}}
+
     #canvas
       .navbar.navbar-default.navbar-fixed-top
         button.navbar-toggle(type="button" data-toggle="offcanvas" data-target="#mainMenu" data-canvas="#canvas")
           span.icon-bar
           span.icon-bar
           span.icon-bar
-      #main.container-fluid
-        .row
-          .col-sm-12
+      #main
+        .explorer(ng-show='current')
+          .top-section
+            .container-fluid
+              .row
+                .col-sm-12
+                  .api
+                    .input-group.input-group-lg
+                      span.input-group-addon.method(ng-class="{ GET: 'api-get', POST: 'api-post', PUT: 'api-put', DELETE: 'api-delete' }[current.method]") {{current.method}}
+                      input.form-control.path(ng-model='url' uib-tooltip='{{current.path}}' tooltip-placement='bottom')
+                  .info
+                    p.p-10 {{current.description}}
+                    .tags
+                      a.tag(ng-repeat="tag in current.tags track by $index" ng-click='tagIt(tag)') {{tag}}
+            a.btn.btn-circle(ng-click='post()')
+              i.zmdi.zmdi-mail-send
+          .bottom-section
+            .container-fluid
+              .row
+                .col-sm-6
+                  .form.card
+                    .container-fluid
+                      h4 REQUEST QUERY
+                      .row.field(ng-repeat='item in query' ng-class='item.include? "active" : ""')
+                        .col-sm-4
+                          input.form-control(ng-model='item.name' placeholder='{{item.name}}')
+                        .col-sm-7
+                          input.form-control(ng-model='item.value')
+                        .col-sm-1
+                          checkbox.checkbox(type="checkbox" ng-model='item.include' ng-disabled='item.required')
+                      h4 REQUEST PAYLOAD
+                      .row.field(ng-repeat='item in payload' ng-class='item.include? "active" : ""')
+                        .col-sm-4
+                          input.form-control(ng-model='item.name' placeholder='{{item.name}}')
+                        .col-sm-7
+                          input.form-control(ng-model='item.value')
+                        .col-sm-1
+                          checkbox.checkbox(type="checkbox" ng-model='item.include' ng-disabled='item.required')
+                .col-sm-6
+                  .response.card
+                    h4 RESPONSE
+                    pre.json(json-tree="response")
+        .top-section(ng-hide='current')
+          .container-fluid
+            .row
+              .col-sm-12
+                h4 API Explorer
+                p Start exploring APIs in the left menu.

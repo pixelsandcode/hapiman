@@ -1,0 +1,31 @@
+pre.json{
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 5px;
+  margin: 5px
+}
+pre.json span.string{ color:#4CAF50 }
+pre.json span.number{ color:#2196F3 }
+pre.json span.boolean{ color:#2196F3 }
+pre.json span.null{ color:#E91E63 }
+pre.json span.key{ color:#607D8B }
+pre.json span.sep{ color:#9E9E9E }
+pre.json span.sep{ color:#9E9E9E }
+
+pre.json .child{
+  padding-left: 20px;
+}
+pre.json .hide-child .child {
+  display: none;
+}
+pre.json .hide-child .zip:after {
+  content: '...';
+}
+pre.json .pointer{
+  cursor: pointer;
+}
+pre.json .hide-child .zip:after,
+pre.json .hide-child .sep{
+  color: #e67e22;
+}
