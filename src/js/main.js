@@ -9,7 +9,10 @@ import "angular-ui-bootstrap";
 import "angular-bootstrap-checkbox";
 import "./json-tree.js";
 
-import css from '../css/main.css'
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/jasny-bootstrap/dist/css/jasny-bootstrap.min.css";
+import "../../node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.css";
+import '../css/main.scss'
 
 const app = angular.module('docs', ['angularMoment', 'ui.bootstrap', 'ui.checkbox', 'ngJsonTree']);
 

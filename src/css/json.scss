@@ -1,0 +1,30 @@
+pre.json{
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 5px;
+  margin: 5px
+
+  span.string{ color:#4CAF50 }
+  span.number{ color:#2196F3 }
+  span.boolean{ color:#2196F3 }
+  span.null{ color:#E91E63 }
+  span.key{ color:#607D8B }
+  span.sep{ color:#9E9E9E }
+  .pointer{
+    cursor: pointer;
+  }
+  .child{
+    padding-left: 20px;
+  }
+  .hide-child .child {
+    display: none;
+  }
+  .hide-child .zip:after {
+    content: '...';
+  }
+  .hide-child .zip:after,
+  .hide-child .sep{
+    color: #e67e22;
+  }
+}

@@ -1,0 +1,96 @@
+#main .top-section{
+  background: $dark-color;
+  padding-top: 60px;
+  color: #fff;
+  min-height: 200px;
+  position: relative;
+}
+
+#main .bottom-section{
+  padding-top: 40px;
+}
+
+.card{
+  background: #fff;
+  padding: 20px;
+}
+
+.explorer .api{
+  font-weight: bold;
+}
+
+.explorer .input-group-addon,
+.explorer .input-group-btn,
+.explorer .input-group-btn .btn{
+  border-radius: 0;
+}
+
+.explorer .method{
+  border: none;
+  font-weight: bold;
+}
+
+.explorer .path{
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.explorer .info{
+  background: $dark-color;
+  color: #fff;
+  padding-bottom: 10px;
+}
+.tag, .tag:hover {
+  font-size: 10px;
+  background: $action-color;
+  display: inline-block;
+  padding: 3px 10px;
+  margin-right: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+.tag:hover {
+  background: $blue;
+}
+
+.explorer .form{
+  padding-top: 5px;
+}
+.explorer .form .field{
+  padding: 3px 0px;
+  margin-bottom: 1px;
+}
+.explorer .form .field,
+.explorer .form .field input{
+  color: #bbb;
+}
+.explorer .form .field.active input{
+  color: #fff;
+  background: #95a5a6;
+}
+
+.explorer .form .field .checkbox{
+  background: #ecf0f1;
+  color: #fff;
+  margin-top: 6px;
+}
+.explorer .form .field.active .checkbox{
+  background: $dark-color;
+}
+.explorer .form .field .checkbox[disabled]{
+  background: $dark-color;
+}
+
+.explorer .form .field input{
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}

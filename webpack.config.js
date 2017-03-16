@@ -6,7 +6,7 @@ module.exports = {
     main: './src/js/main.js'
   },
   output: {
-    path: './template/assets',
+    path: './template/assets/build/',
     filename: '[name].js'
   },
   plugins: [
@@ -15,22 +15,31 @@ module.exports = {
       jQuery: "jquery",
       'window.jQuery':'jquery'
     }),
-    new ExtractTextPlugin("style.css")
+    new ExtractTextPlugin("main.css")
   ],
   module: {
     loaders: [
       {
         test: /\.css/,
-        loaders: 'css-loader',
+        loader: ExtractTextPlugin.extract( { fallback: "style-loader", use: "css-loader" } )
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract( { fallback: "style-loader", use: "css-loader!sass-loader" } )
+      },
+      {
+        test: /\.(woff2?|ttf|eot|svg)$/,
+        loader: 'url-loader?limit=100000' 
       },
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
         test: /[\/\\]node_modules[\/\\]some-module[\/\\]index\.js$/,
-        loader: "imports?this=>window"
+        loader: "imports-loader?this=>window"
       }
     ]
   }

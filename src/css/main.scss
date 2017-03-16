@@ -1,0 +1,26 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+$action-color: #2c3e50;
+$dark-color: #34495e;
+$blue: #3498db;
+$green: #2ecc71;
+$yellow: #1abc9c;
+$red: #e74c3c;
+
+$get-color: #3498db;
+$post-color: #2ecc71;
+$put-color: #1abc9c;
+$delete-color: #e74c3c;
+
+@import 'template.scss';
+@import 'json.scss';
+@import 'common.scss';
+@import 'content.scss';
+@import 'menu.scss';
+
+.api-get{ background: $get-color }
+.api-post{ background: $post-color }
+.api-put{ background: $put-color }
+.api-delete{ background: $delete-color; }

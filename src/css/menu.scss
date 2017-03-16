@@ -1,0 +1,38 @@
+#lookup *{
+  border: none;
+  border-radius: 0;
+}
+
+#lookup{
+  border-bottom: 1px solid #ddd;
+}
+
+#lookup .input-group-addon i{
+  width: 15px;
+}
+
+.navmenu .title{
+  font-size: 14px;
+  padding: 10px 15px;
+  color: #aaa;
+}
+
+.navmenu .navmenu-nav > li > a{
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 1px dashed rgba(255,255,255,0.5);
+  border-left: 4px solid transparent;
+  display: block;
+}
+.navmenu .navmenu-nav > li > a:hover{
+  border-left-color: rgba(0,0,0,0.3);
+}
+
+.navmenu-nav .info{
+  display: block;
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+
