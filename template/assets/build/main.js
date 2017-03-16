@@ -30609,7 +30609,7 @@ __webpack_require__(125)
 /* 120 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \n  span.string{ color:#4CAF50 }\n     ^\n      Invalid CSS after \"  span\": expected expression (e.g. 1px, bold), was \".string{ color:#4CA\"\n      in /Users/arash/Projects/r-and-d/hapiman/src/css/json.scss (line 8, column 7)\n    at /Users/arash/.nvm/versions/node/v4.0.0/lib/node_modules/webpack/lib/NormalModule.js:141:35\n    at /Users/arash/.nvm/versions/node/v4.0.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/arash/.nvm/versions/node/v4.0.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/Users/arash/.nvm/versions/node/v4.0.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.callback (/Users/arash/Projects/r-and-d/hapiman/node_modules/sass-loader/lib/loader.js:57:13)\n    at Object.<anonymous> (/Users/arash/Projects/r-and-d/hapiman/node_modules/sass-loader/node_modules/async/dist/async.js:2237:31)\n    at apply (/Users/arash/Projects/r-and-d/hapiman/node_modules/sass-loader/node_modules/async/dist/async.js:20:25)\n    at Object.<anonymous> (/Users/arash/Projects/r-and-d/hapiman/node_modules/sass-loader/node_modules/async/dist/async.js:56:12)\n    at Object.callback (/Users/arash/Projects/r-and-d/hapiman/node_modules/sass-loader/node_modules/async/dist/async.js:843:16)\n    at options.error (/Users/arash/Projects/r-and-d/hapiman/node_modules/node-sass/lib/index.js:294:32)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 121 */
