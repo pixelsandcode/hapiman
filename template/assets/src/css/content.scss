@@ -1,0 +1,139 @@
+#main {
+  
+  .top-section{
+    background: $dark-color;
+    padding-top: 60px;
+    color: #fff;
+    min-height: 200px;
+    position: relative;
+  }
+
+  .bottom-section{
+    padding-top: 40px;
+  }
+
+}
+
+.card{
+  background: #fff;
+  padding: 20px;
+}
+
+.explorer {
+  
+  .api{
+    font-weight: bold;
+  }
+
+  .input-group-addon,
+  .input-group-btn,
+  .input-group-btn .btn{
+    border-radius: 0;
+  }
+
+  .method{
+    border: none;
+    font-weight: bold;
+  }
+
+  .path{
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  .info{
+    background: $dark-color;
+    color: #fff;
+    padding-bottom: 10px;
+  }
+
+  .remove-btn,
+  .add-btn{
+    color: #ccc;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: -2px;
+    margin-right: 5px;
+  }
+  .add-btn:hover {
+    color: $blue;
+  }
+  .remove-btn{
+    margin-top: 8px;
+    margin-right: 5px;
+  }
+  .remove-btn:hover {
+    color: $yellow;
+  }
+
+  .form{
+    padding-top: 5px;
+
+    .field{
+      padding: 0px;
+      margin-bottom: 1px;
+      
+      > .input,
+      > .input {
+        padding: 2px;
+      }
+      &,
+      input{
+        color: #ccc;
+      }
+      &.active{
+        background: $blue;
+        input::-moz-placeholder { color: $dark-color !important; }
+        input:-moz-placeholder { color: $dark-color !important; }
+        input::-webkit-input-placeholder { color: $dark-color !important; }
+        input:-ms-input-placeholder { color: $dark-color !important; }
+      }
+      &.active input{
+        color: #fff;
+      }
+
+      .checkbox{
+        background: #ecf0f1;
+        color: #fff;
+        margin-top: 8px;
+      }
+
+      &.active .checkbox{
+        background: $dark-color;
+      }
+      .checkbox[disabled]{
+        background: $blue;
+      }
+
+      input{
+        background: rgba(255,255,255,0.2);
+        border: none;
+        border-radius: 0;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+.tag, .tag:hover {
+  font-size: 10px;
+  background: $action-color;
+  display: inline-block;
+  padding: 3px 10px;
+  margin-right: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.tag:hover {
+  background: $blue;
+}
+
+

@@ -1,3 +1,5 @@
+include fields.pug
+
 doctype html
 html(lang="en" ng-app='docs')
   head
@@ -33,6 +35,19 @@ html(lang="en" ng-app='docs')
           span.icon-bar
           span.icon-bar
           span.icon-bar
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(ng-click='showKey=!showKey') API/AUTH KEY
+      .header(ng-show='showKey')
+        .container-fluid
+          .row
+            .col-sm-3
+              input.form-control(ng-model='key.name' placeholder='API/AUTH key property name')
+            .col-sm-5
+              input.form-control(ng-model='key.value' placeholder='API/AUTH key value')
+            .col-sm-4
+              span Append using
+              .dropdown(bs-dropdown bs-dropdown-display='How to Append' bs-dropdown-items='appendTypes' ng-model='key.type')
       #main
         .explorer(ng-show='current')
           .top-section
@@ -46,7 +61,7 @@ html(lang="en" ng-app='docs')
                   .info
                     p.p-10 {{current.description}}
                     .tags
-                      a.tag(ng-repeat="tag in current.tags track by $index" ng-click='tagIt(tag)') {{tag}}
+                      a.tag(ng-repeat="tag in current.tags track by $index" ng-click='tagIt(tag, $event)') {{tag}}
             a.btn.btn-circle(ng-click='post()')
               i.zmdi.zmdi-mail-send
           .bottom-section
@@ -55,22 +70,16 @@ html(lang="en" ng-app='docs')
                 .col-sm-6
                   .form.card
                     .container-fluid
-                      h4 REQUEST QUERY
-                      .row.field(ng-repeat='item in query' ng-class='item.include? "active" : ""')
-                        .col-sm-4
-                          input.form-control(ng-model='item.name' placeholder='{{item.name}}')
-                        .col-sm-7
-                          input.form-control(ng-model='item.value')
-                        .col-sm-1
-                          checkbox.checkbox(type="checkbox" ng-model='item.include' ng-disabled='item.required')
-                      h4 REQUEST PAYLOAD
-                      .row.field(ng-repeat='item in payload' ng-class='item.include? "active" : ""')
-                        .col-sm-4
-                          input.form-control(ng-model='item.name' placeholder='{{item.name}}')
-                        .col-sm-7
-                          input.form-control(ng-model='item.value')
-                        .col-sm-1
-                          checkbox.checkbox(type="checkbox" ng-model='item.include' ng-disabled='item.required')
+                      h5.m-t-20
+                        | PAYLOAD PARAMS
+                        .pull-right
+                          i.zmdi.zmdi-plus-circle.add-btn(ng-click="payload.push({label: 'custom property', name: '', value: '', include: true})")
+                      +fields('payload.splice($index, 1)')(ng-repeat="item in payload")
+                      h5
+                        | QUERY PARAMS
+                        .pull-right
+                          i.zmdi.zmdi-plus-circle.add-btn(ng-click="query.push({label: 'custom property', name: '', value: '', include: true})")
+                      +fields('query.splice($index, 1)')(ng-repeat="item in query")
                 .col-sm-6
                   .response.card
                     h4 RESPONSE

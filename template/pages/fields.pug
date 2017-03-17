@@ -1,0 +1,10 @@
+mixin fields(remove)
+  .row.field(ng-class='item.include? "active" : ""')&attributes(attributes)
+    .col-sm-4.input
+      input.form-control(ng-model='item.name' placeholder='{{item.label}}')
+    .col-sm-6.input
+      input.form-control(ng-model='item.value')
+    .col-sm-1
+      checkbox.checkbox(type="checkbox" ng-model='item.include' ng-disabled='item.required')
+    .col-sm-1
+      i.zmdi.zmdi-minus-circle.remove-btn.pull-right(ng-click=remove)

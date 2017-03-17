@@ -3,7 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/js/main.js'
+    main: './template/assets/src/js/main.js'
   },
   output: {
     path: './template/assets/build/',
@@ -13,7 +13,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      'window.jQuery':'jquery'
+      'window.jQuery': 'jquery',
+      '_': 'lodash'
     }),
     new ExtractTextPlugin("main.css")
   ],
@@ -30,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.(woff2?|ttf|eot|svg)$/,
-        loader: 'url-loader?limit=100000' 
+        loader: 'url-loader?limit=100000'
       },
       {
         test: /\.js$/,
