@@ -47644,7 +47644,6 @@ module.exports = {
     var params = [];
     if (api.params[scope]) {
       var items = JSON.flatten(api.params[scope]);
-      console.log(items);
       for (var key in items) {
         var item = items[key];
         var required = (item.flags || {}).presence == "required";
@@ -47659,8 +47658,17 @@ module.exports = {
       var name = item.name.replace(/\[/g, '.').replace(/]/g, '');
       _lodash2.default.set(data, name, item.value);
     });
-    console.log();
     return data;
+  },
+  getResponse: function getResponse(response) {
+    var headers = _lodash2.default.pickBy(response.headers(), function (value, key) {
+      return typeof value == 'string';
+    });
+    return {
+      status: response.status,
+      data: response.data,
+      headers: headers
+    };
   }
 };
 
@@ -91712,7 +91720,7 @@ app.controller('mainController', ['$scope', '$http', 'moment', function ($scope,
         name: 'api-key',
         type: configs.appendTypes[0]
       };
-      $scope.response = {};
+      $scope.response = { data: null, status: null, headers: null };
       $scope.current = null;
       $scope.toggle = privates.events.toggle;
       $scope.select = privates.events.select;
@@ -91745,7 +91753,6 @@ app.controller('mainController', ['$scope', '$http', 'moment', function ($scope,
         if ($scope.key.value) {
           [headers, params, data][configs.appendTypes.indexOf($scope.key.type)][$scope.key.name] = $scope.key.value;
         }
-        console.log(headers, params, data);
         $http({
           method: $scope.current.method,
           url: $scope.url,
@@ -91753,9 +91760,9 @@ app.controller('mainController', ['$scope', '$http', 'moment', function ($scope,
           params: params,
           data: data
         }).then(function (response) {
-          $scope.response = response.data;
+          $scope.response = _apiHandler2.default.getResponse(response);
         }, function (response) {
-          $scope.response = response.data;
+          $scope.response = _apiHandler2.default.getResponse(response);
         });
       }
     },

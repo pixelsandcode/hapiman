@@ -31,7 +31,6 @@ module.exports = {
     var params = [];
     if(api.params[scope]) {
       var items = JSON.flatten( api.params[scope]);
-      console.log(items);
       for(var key in items) {
         var item = items[key];
         var required = (item.flags||{}).presence == "required"
@@ -46,7 +45,16 @@ module.exports = {
       var name = item.name.replace(/\[/g,'.').replace(/]/g,'');
       _.set(data, name, item.value)
     });
-    console.log();
     return data;
+  },
+  getResponse: (response) => {
+    var headers = _.pickBy( response.headers(), (value, key) => {
+      return typeof value == 'string'
+    });
+    return {
+      status: response.status,
+      data: response.data,
+      headers: headers
+    }
   }
 }

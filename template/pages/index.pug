@@ -83,7 +83,13 @@ html(lang="en" ng-app='docs')
                 .col-sm-6
                   .response.card
                     h4 RESPONSE
-                    pre.json(json-tree="response")
+                    uib-tabset(active="active")
+                      uib-tab(index="0" heading="data")
+                        pre.json(json-tree="response.data" ng-show='response.data')
+                        p.p-t-10(ng-hide='response.headers') Start making a request first.
+                      uib-tab(index="1" heading="headers")
+                        pre.json(json-tree="response.headers" ng-show='response.headers')
+                        p.p-t-10(ng-hide='response.headers') Start making a request first.
         .top-section(ng-hide='current')
           .container-fluid
             .row

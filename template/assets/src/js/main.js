@@ -36,7 +36,7 @@ app.controller( 'mainController', [ '$scope', '$http', 'moment', ($scope, $http,
         name: 'api-key',
         type: configs.appendTypes[0]
       }
-      $scope.response = {};
+      $scope.response = { data: null, status: null, headers: null };
       $scope.current = null;
       $scope.toggle = privates.events.toggle;
       $scope.select = privates.events.select;
@@ -65,7 +65,6 @@ app.controller( 'mainController', [ '$scope', '$http', 'moment', ($scope, $http,
         if($scope.key.value){
           [ headers, params, data ][configs.appendTypes.indexOf($scope.key.type)][$scope.key.name] = $scope.key.value
         }
-        console.log(headers, params, data);
         $http({
           method: $scope.current.method,
           url: $scope.url,
@@ -73,9 +72,9 @@ app.controller( 'mainController', [ '$scope', '$http', 'moment', ($scope, $http,
           params: params,
           data: data
         }).then( (response) => {
-          $scope.response = response.data;
+          $scope.response = API.getResponse(response);
         }, (response) => {
-          $scope.response = response.data;
+          $scope.response = API.getResponse(response);
         });
       }
     },
