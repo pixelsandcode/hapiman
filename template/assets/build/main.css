@@ -5423,6 +5423,13 @@ a, .nav a, .pagination, .carousel, .panel-title a {
       -moz-box-shadow: none !important;
       box-shadow: none !important; }
 
+.explorer .label {
+  margin-left: 5px;
+  font-size: 0.6em;
+  vertical-align: top;
+  margin-top: -5px;
+  display: inline-block; }
+
 .tag, .tag:hover {
   font-size: 10px;
   background: #2c3e50;

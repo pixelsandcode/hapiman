@@ -82,7 +82,9 @@ html(lang="en" ng-app='docs')
                       +fields('query.splice($index, 1)')(ng-repeat="item in query")
                 .col-sm-6
                   .response.card
-                    h4 RESPONSE
+                    h4
+                      | RESPONSE
+                      span.label(ng-show='response.status' ng-class="response.status.toString()[0]=='2'? 'label-success' : 'label-danger' ") {{response.status}}
                     uib-tabset(active="active")
                       uib-tab(index="0" heading="data")
                         pre.json(json-tree="response.data" ng-show='response.data')
