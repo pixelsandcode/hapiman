@@ -47621,7 +47621,7 @@ module.exports = {
       var params = api.params.path.children;
       for (var key in params) {
         var item = params[key];
-        if (item.examples[0]) url = url.replace("{" + key + "}", item.examples[0]);
+        if (_lodash2.default.find(item, 'examples') && item.examples[0]) url = url.replace("{" + key + "}", item.examples[0]);
       }
     }
     return url;

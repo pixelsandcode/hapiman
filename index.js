@@ -24,7 +24,7 @@ internals.getRoutes = function (routes) {
       path: internals.describe(route.settings.validate.params),
       query: internals.describe(route.settings.validate.query),
       payload: internals.describe(route.settings.validate.payload),
-      response: internals.describe(route.settings.response.schema)
+      response: internals.describe((route.settings.response||{}).schema)
     },
     sample: (route.settings.plugins.hapiman||{}).sample,
     version: (route.settings.plugins.hapiman||{}).version
