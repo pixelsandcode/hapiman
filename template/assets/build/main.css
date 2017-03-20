@@ -5246,11 +5246,10 @@ html, body {
 
 .header {
   background: #3498db;
-  margin-top: 50px;
   padding: 10px;
-  position: fixed;
   width: 100%;
   z-index: 3;
+  margin-bottom: 20px;
   color: #fff; }
   .header input {
     background: none;
@@ -5272,6 +5271,17 @@ html, body {
   .header .dropdown {
     display: inline-block;
     margin-left: 5px; }
+    .header .dropdown button.btn-default,
+    .header .dropdown button.btn-default:hover,
+    .header .dropdown .dropdown-menu {
+      background-color: #3498db !important; }
+    .header .dropdown .btn-default, .header .dropdown .btn-default.active.focus, .header .dropdown .btn-default.active:focus, .header .dropdown .btn-default.active:hover, .header .dropdown .btn-default:active.focus, .header .dropdown .btn-default:active:focus, .header .dropdown .btn-default:active:hover, .header .dropdown .open > .dropdown-toggle.btn-default.focus, .header .dropdown .open > .dropdown-toggle.btn-default:focus, .header .dropdown .open > .dropdown-toggle.btn-default:hover {
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important; }
+    .header .dropdown ul.dropdown-menu a:hover {
+      background: rgba(255, 255, 255, 0.2); }
     .header .dropdown .caret {
       margin-left: 10px; }
 
@@ -5314,6 +5324,9 @@ a, .nav a, .pagination, .carousel, .panel-title a {
 .m-t-20 {
   margin-top: 20px; }
 
+.m-r-5 {
+  margin-right: 5px; }
+
 .p-10 {
   padding: 10px; }
 
@@ -5322,6 +5335,9 @@ a, .nav a, .pagination, .carousel, .panel-title a {
 
 .p-t-5 {
   padding-top: 5; }
+
+.c-yellow {
+  color: #f39c12; }
 
 .pointer {
   cursor: pointer; }
@@ -5338,7 +5354,8 @@ a, .nav a, .pagination, .carousel, .panel-title a {
 
 .card {
   background: #fff;
-  padding: 20px; }
+  padding: 20px;
+  min-height: 400px; }
 
 .explorer .api {
   font-weight: bold; }
@@ -5365,6 +5382,24 @@ a, .nav a, .pagination, .carousel, .panel-title a {
   background: #34495e;
   color: #fff;
   padding-bottom: 10px; }
+  .explorer .info .description {
+    padding: 10px 0 20px; }
+    .explorer .info .description .zmdi-hc-stack-2x {
+      color: rgba(255, 255, 255, 0.3); }
+  .explorer .info h5 {
+    color: #607d8b;
+    font-weight: bold; }
+  .explorer .info dd {
+    padding-bottom: 5px; }
+    .explorer .info dd b {
+      color: #3498db; }
+  .explorer .info .type {
+    color: #2ecc71; }
+  .explorer .info .unknown {
+    color: #f39c12; }
+  .explorer .info .missing {
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic; }
 
 .explorer .remove-btn,
 .explorer .add-btn {
@@ -5384,44 +5419,42 @@ a, .nav a, .pagination, .carousel, .panel-title a {
 .explorer .remove-btn:hover {
   color: #f39c12; }
 
-.explorer .form {
-  padding-top: 5px; }
-  .explorer .form .field {
-    padding: 0px;
-    margin-bottom: 1px; }
-    .explorer .form .field > .input,
-    .explorer .form .field > .input {
-      padding: 2px; }
-    .explorer .form .field,
-    .explorer .form .field input {
-      color: #ccc; }
-    .explorer .form .field.active {
-      background: #3498db; }
-      .explorer .form .field.active input::-moz-placeholder {
-        color: #34495e !important; }
-      .explorer .form .field.active input:-moz-placeholder {
-        color: #34495e !important; }
-      .explorer .form .field.active input::-webkit-input-placeholder {
-        color: #34495e !important; }
-      .explorer .form .field.active input:-ms-input-placeholder {
-        color: #34495e !important; }
-    .explorer .form .field.active input {
-      color: #fff; }
-    .explorer .form .field .checkbox {
-      background: #ecf0f1;
-      color: #fff;
-      margin-top: 8px; }
-    .explorer .form .field.active .checkbox {
-      background: #34495e; }
-    .explorer .form .field .checkbox[disabled] {
-      background: #3498db; }
-    .explorer .form .field input {
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      border-radius: 0;
-      -webkit-box-shadow: none !important;
-      -moz-box-shadow: none !important;
-      box-shadow: none !important; }
+.explorer .form .field {
+  padding: 0px;
+  margin-bottom: 1px; }
+  .explorer .form .field > .input,
+  .explorer .form .field > .input {
+    padding: 2px; }
+  .explorer .form .field,
+  .explorer .form .field input {
+    color: #ccc; }
+  .explorer .form .field.active {
+    background: #3498db; }
+    .explorer .form .field.active input::-moz-placeholder {
+      color: #34495e !important; }
+    .explorer .form .field.active input:-moz-placeholder {
+      color: #34495e !important; }
+    .explorer .form .field.active input::-webkit-input-placeholder {
+      color: #34495e !important; }
+    .explorer .form .field.active input:-ms-input-placeholder {
+      color: #34495e !important; }
+  .explorer .form .field.active input {
+    color: #fff; }
+  .explorer .form .field .checkbox {
+    background: #ecf0f1;
+    color: #fff;
+    margin-top: 8px; }
+  .explorer .form .field.active .checkbox {
+    background: #34495e; }
+  .explorer .form .field .checkbox[disabled] {
+    background: #3498db; }
+  .explorer .form .field input {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important; }
 
 .explorer .label {
   margin-left: 5px;

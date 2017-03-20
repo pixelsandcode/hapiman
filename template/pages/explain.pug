@@ -1,0 +1,19 @@
+mixin explain(loop, title)
+  h5= title
+  dl.dl-horizontal
+    dt(ng-repeat-start=loop)
+      | {{param.label}}
+    dd(ng-repeat-end)
+      i.zmdi.zmdi-check-all.c-yellow.m-r-5(ng-show='param.required' title='required')
+      span.type(ng-show='param.type') {{param.type}}: 
+      span.unknown(ng-hide='param.type') Unknown: 
+      span(ng-show='param.description') {{param.description}}
+      span.missing(ng-hide='param.description') Missing description
+      div
+        span(ng-repeat='(flag, value) in param.flags')
+          ng-bind-html(ng-bind-html='explainFlag(flag, value, param)')
+        span(ng-show='param.rules')
+          span(ng-repeat='rule in param.rules')
+            ng-bind-html(ng-bind-html='explainRule(rule, param)')
+            span(ng-show='!$last')  ,  
+          span .

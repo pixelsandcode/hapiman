@@ -5,6 +5,9 @@ a, .nav a, .pagination, .carousel, .panel-title a { cursor: pointer; }
 .m-t-20{
   margin-top: 20px;
 }
+.m-r-5{
+  margin-right: 5px;
+}
 .p-10{
   padding: 10px;
 }
@@ -13,6 +16,9 @@ a, .nav a, .pagination, .carousel, .panel-title a { cursor: pointer; }
 }
 .p-t-5{
   padding-top: 5;
+}
+.c-yellow{
+  color: $yellow;
 }
 .pointer{
   cursor: pointer;

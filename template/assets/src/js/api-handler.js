@@ -34,10 +34,37 @@ module.exports = {
       for(var key in items) {
         var item = items[key];
         var required = (item.flags||{}).presence == "required"
-        params.push( { label: key, name: key, value: (item.examples||[])[0], required: required, include: required } );
+        var data = { label: key, name: key, value: (item.examples||[])[0], required: required, include: required };
+        data = _.extend( item, data);
+        params.push( data );
       }
     }
     return params;
+  },
+  explain: {
+    flag: (flag, value, item) => {
+      var message = '';
+      if(flag == 'allowOnly'){
+        if(item.valids.length==1) {
+          message = `Value must be <b>${item.valids[0]}</b>.`;
+        } else {
+          message = `Value must be one of <b>${item.valids.join('</b>, <b>')}</b>.`;
+        }
+      }
+      return message;
+    },
+    rule: (rule, item) => {
+      var message = '';
+      if(rule.name=='min')
+        message = `${item.label} > <b>${rule.arg}</b>`
+      if(rule.name=='max')
+        message = `${item.label} < <b>${rule.arg}</b>`
+      if(rule.name=='email')
+        message = `it must be valid <b>email address</b>`
+      if(rule.name=='regex')
+        message = `${item.label} must be valid <b>${rule.arg}</b>`
+      return message;
+    }
   },
   toData: (params) => {
     var data = {};

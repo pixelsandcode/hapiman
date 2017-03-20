@@ -1,4 +1,14 @@
-mixin fields(remove)
+mixin fields(remove, hide, click, header)
+  h5
+    span= header
+    .pull-right
+      i.zmdi.zmdi-plus-circle.add-btn(ng-click=click)
+  .row(ng-hide=hide)
+    .col-sm-12
+      p 
+        | No parameter is set. Add one by clicking 
+        a(ng-click=click) here
+        | .
   .row.field(ng-class='item.include? "active" : ""')&attributes(attributes)
     .col-sm-4.input
       input.form-control(ng-model='item.name' placeholder='{{item.label}}')

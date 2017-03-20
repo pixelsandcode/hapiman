@@ -82,11 +82,10 @@ html, body {
 
 .header{
   background: $blue;
-  margin-top: 50px;
   padding: 10px;
-  position: fixed;
   width: 100%;
   z-index: 3;
+  margin-bottom: 20px;
   color: #fff;
   input{
     background: none;
@@ -105,6 +104,23 @@ html, body {
   .dropdown {
     display: inline-block;
     margin-left: 5px;
+
+    button.btn-default,
+    button.btn-default:hover,
+    .dropdown-menu {
+      background-color: $blue !important;
+    }
+    .btn-default, .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+      border: 1px solid rgba(255,255,255,0.5);
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important;
+    }
+    ul.dropdown-menu{
+      a:hover {
+        background: rgba(255,255,255,0.2);
+      }
+    }
 
     .caret{
       margin-left: 10px;

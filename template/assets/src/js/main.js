@@ -3,6 +3,7 @@ import "bootstrap";
 import "../../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min.js";
 import "moment";
 import 'angular';
+import 'angular-sanitize';
 import "../../../../node_modules/angular-bootstrap-dropdown/dist/bsDropdown.min.js";
 import "angular-ui-router";
 import "angular-moment";
@@ -14,7 +15,7 @@ import './styles.js';
 
 import API from './api-handler.js';
 
-const app = angular.module('docs', ['angularMoment', 'ui.bootstrap', 'ui.checkbox', 'ngJsonTree', 'ng.bs.dropdown']);
+const app = angular.module('docs', ['angularMoment', 'ui.bootstrap', 'ui.checkbox', 'ngJsonTree', 'ng.bs.dropdown', 'ngSanitize']);
 const configs = {
   endpoints: {
     list: '/docs/api'
@@ -26,7 +27,7 @@ const configs = {
   ]
 }
 
-app.controller( 'mainController', [ '$scope', '$http', 'moment', ($scope, $http, moment) => {
+app.controller( 'mainController', [ '$scope', '$http', 'moment', '$sce', ($scope, $http, moment, $sce) => {
 
   const privates = {
     assign: () => {
@@ -42,6 +43,8 @@ app.controller( 'mainController', [ '$scope', '$http', 'moment', ($scope, $http,
       $scope.select = privates.events.select;
       $scope.post = privates.events.post;
       $scope.tagIt = privates.events.tagIt;
+      $scope.explainFlag = (flag, value, item) => { return $sce.trustAsHtml(API.explain.flag(flag, value, item)); };
+      $scope.explainRule = (rule, item) => { return $sce.trustAsHtml(API.explain.rule(rule, item)); };
     },
     events: {
       toggle: (connection) => {
@@ -50,6 +53,7 @@ app.controller( 'mainController', [ '$scope', '$http', 'moment', ($scope, $http,
       select: (api) => {
         $scope.current = api;
         $scope.url = API.make(api);
+        $scope.path = API.getParams(api, 'path');;
         $scope.payload = API.getParams(api, 'payload');;
         $scope.query = API.getParams(api, 'query');
       },
@@ -83,7 +87,6 @@ app.controller( 'mainController', [ '$scope', '$http', 'moment', ($scope, $http,
         .then( (response) => {
           $scope.connections = response.data;
           $scope.connections[0].show = true;
-          privates.events.select($scope.connections[0].table[1]);
         });
     }
   }

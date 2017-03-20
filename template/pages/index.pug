@@ -35,33 +35,24 @@ html(lang="en" ng-app='docs')
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        ul.nav.navbar-nav.navbar-right
+        ul.nav.navbar-nav.navbar-right(ng-show='current')
           li
             a(ng-click='showKey=!showKey') API/AUTH KEY
-      .header(ng-show='showKey')
-        .container-fluid
-          .row
-            .col-sm-3
-              input.form-control(ng-model='key.name' placeholder='API/AUTH key property name')
-            .col-sm-5
-              input.form-control(ng-model='key.value' placeholder='API/AUTH key value')
-            .col-sm-4
-              span Append using
-              .dropdown(bs-dropdown bs-dropdown-display='How to Append' bs-dropdown-items='appendTypes' ng-model='key.type')
       #main
         .explorer(ng-show='current')
           .top-section
+            .header(ng-show='showKey')
+              .container-fluid
+                .row
+                  .col-sm-3
+                    input.form-control(ng-model='key.name' placeholder='API/AUTH key property name')
+                  .col-sm-5
+                    input.form-control(ng-model='key.value' placeholder='API/AUTH key value')
+                  .col-sm-4
+                    span Append using
+                    .dropdown(bs-dropdown bs-dropdown-display='How to Append' bs-dropdown-items='appendTypes' ng-model='key.type')
             .container-fluid
-              .row
-                .col-sm-12
-                  .api
-                    .input-group.input-group-lg
-                      span.input-group-addon.method(ng-class="{ GET: 'api-get', POST: 'api-post', PUT: 'api-put', DELETE: 'api-delete' }[current.method]") {{current.method}}
-                      input.form-control.path(ng-model='url' uib-tooltip='{{current.path}}' tooltip-placement='bottom')
-                  .info
-                    p.p-10 {{current.description}}
-                    .tags
-                      a.tag(ng-repeat="tag in current.tags track by $index" ng-click='tagIt(tag, $event)') {{tag}}
+              include info.pug
             a.btn.btn-circle(ng-click='post()')
               i.zmdi.zmdi-mail-send
           .bottom-section
@@ -70,16 +61,10 @@ html(lang="en" ng-app='docs')
                 .col-sm-6
                   .form.card
                     .container-fluid
-                      h5.m-t-20
-                        | PAYLOAD PARAMS
-                        .pull-right
-                          i.zmdi.zmdi-plus-circle.add-btn(ng-click="payload.push({label: 'custom property', name: '', value: '', include: true})")
-                      +fields('payload.splice($index, 1)')(ng-repeat="item in payload")
-                      h5
-                        | QUERY PARAMS
-                        .pull-right
-                          i.zmdi.zmdi-plus-circle.add-btn(ng-click="query.push({label: 'custom property', name: '', value: '', include: true})")
-                      +fields('query.splice($index, 1)')(ng-repeat="item in query")
+                      div(ng-show="current.method != 'GET'")
+                        +fields('payload.splice($index, 1)', 'payload.length>0', "payload.push({label: 'custom property', name: '', value: '', include: true})", 'PAYLOAD PARAMS')(ng-repeat="item in payload")
+                      .m-t-20
+                        +fields('query.splice($index, 1)', 'query.length>0', "query.push({label: 'custom property', name: '', value: '', include: true})", 'QUERY PARAMS')(ng-repeat="item in query")
                 .col-sm-6
                   .response.card
                     h4

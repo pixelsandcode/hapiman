@@ -1,0 +1,23 @@
+include explain.pug
+
+.row
+  .col-sm-12
+    .api
+      .input-group.input-group-lg
+        span.input-group-addon.method(ng-class="{ GET: 'api-get', POST: 'api-post', PUT: 'api-put', DELETE: 'api-delete' }[current.method]") {{current.method}}
+        input.form-control.path(ng-model='url' uib-tooltip='{{current.path}}' tooltip-placement='bottom')
+    .info
+      .description
+        span.zmdi-hc-stack.m-r-5(ng-click='moreInfo=!moreInfo')
+          i.zmdi.zmdi-circle.zmdi-hc-stack-2x
+          i.zmdi.zmdi-more-vert.zmdi-hc-stack-1x.pointer
+        | {{current.description}}
+      div(ng-show='moreInfo')
+        div(ng-show='path.length>0')
+          +explain('param in path', 'Path params')
+        div(ng-show='query.length>0')
+          +explain('param in query', 'Query params')
+        div(ng-show='payload.length>0')
+          +explain('param in payload', 'Payload params')
+      .tags
+        a.tag(ng-repeat="tag in current.tags track by $index" ng-click='tagIt(tag, $event)') {{tag}}

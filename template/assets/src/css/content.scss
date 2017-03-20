@@ -17,6 +17,7 @@
 .card{
   background: #fff;
   padding: 20px;
+  min-height: 400px;
 }
 
 .explorer {
@@ -50,6 +51,37 @@
     background: $dark-color;
     color: #fff;
     padding-bottom: 10px;
+
+    .description{
+      padding: 10px 0 20px;
+
+      .zmdi-hc-stack-2x{
+        color: rgba(255,255,255,0.3);
+      }
+    }
+
+    h5{
+      color: #607d8b;
+      font-weight: bold;
+    }
+
+    dd{
+      padding-bottom: 5px;
+
+      b{
+        color: $blue;
+      }
+    }
+    .type{
+      color: $green;
+    }
+    .unknown{
+      color: $yellow;
+    }
+    .missing{
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+    }
   }
 
   .remove-btn,
@@ -72,7 +104,6 @@
   }
 
   .form{
-    padding-top: 5px;
 
     .field{
       padding: 0px;
